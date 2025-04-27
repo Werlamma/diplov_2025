@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Регистрация</title>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicon/android-icon-192x192.png' %}">
+
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+
+{% include 'header.html' %}
+
+
+<section class="registration">
+    <div class="container">
+        <h1 class="registration__title">Добро пожаловать!</h1>
+        <div class="registration__wrapper">
+            <div class="registration__main-block">
+                <h2 class="registration__subtitle">Создать аккаунт</h2>
+                <div class="registration__content">
+                    <div class="registration__form-content">
+                        <form action="{% url 'users:register' %}" method="post" class="registration__form" data-success-url="{% url 'users:login' %}" novalidate>
+                            {% csrf_token %}
+                            <div class="registration__form-group">
+                                <label for="{{ form.first_name.id_for_label }}" class="registration__label">Имя</label>
+                                {{ form.first_name }}
+                                {% if form.first_name.errors %}
+                                    <div class="text-danger">{{ form.first_name.errors|join:"<br>" }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="registration__form-group">
+                                <label for="{{ form.last_name.id_for_label }}"
+                                       class="registration__label">Фамилия</label>
+                                {{ form.last_name }}
+                                {% if form.last_name.errors %}
+                                    <div class="text-danger">{{ form.last_name.errors|join:"<br>" }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="registration__form-group">
+                                <label for="{{ form.patronymic.id_for_label }}"
+                                       class="registration__label">Отчество</label>
+                                {{ form.patronymic }}
+                                {% if form.patronymic.errors %}
+                                    <div class="text-danger">{{ form.patronymic.errors|join:"<br>" }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="registration__form-group">
+                                <label for="{{ form.username.id_for_label }}" class="registration__label">Логин</label>
+                                {{ form.username }}
+                                {% if form.username.errors %}
+                                    <div class="text-danger">{{ form.username.errors|join:"<br>" }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="registration__form-group">
+                                <label for="{{ form.phone_number.id_for_label }}" class="registration__label">Номер
+                                    телефона</label>
+                                {{ form.phone_number }}
+                                {% if form.phone_number.errors %}
+                                    <div class="text-danger">{{ form.phone_number.errors|join:"<br>" }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="registration__form-group">
+                                <label for="{{ form.email.id_for_label }}" class="registration__label">Почта</label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                    <div class="text-danger">{{ form.email.errors|join:"<br>" }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="registration__form-group">
+                                <label for="{{ form.password1.id_for_label }}"
+                                       class="registration__label">Пароль</label>
+                                {{ form.password1 }}
+                                {% if form.password1.errors %}
+                                    <div class="text-danger">{{ form.password1.errors|join:"<br>" }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="registration__form-group">
+                                <label for="{{ form.password2.id_for_label }}" class="registration__label">Подтверждение
+                                    пароля</label>
+                                {{ form.password2 }}
+                                {% if form.password2.errors %}
+                                    <div class="text-danger">{{ form.password2.errors|join:"<br>" }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="registration_submit-btn-wrapper">
+                                <button type="submit" class="registration__submit-btn">Зарегистрироваться</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="registration__form-link-wrapper">
+                        <h2 class="registration__form-link-title">У вас уже есть аккаунт?</h2>
+                        <div class="registration__form-link-description">Войдите в систему ниже</div>
+                        <a href="{% url 'users:login' %}" class="registration__form-link">Войти</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
+
+
+{% include 'footer.html' %}
+
+
+{% include 'notification.html' %}
+
+{% include 'cookie.html' %}
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js" crossorigin="anonymous"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/validate.js' %}"></script>
+
+</body>
+
+</html>

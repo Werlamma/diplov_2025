@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Личный кабинет</title>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicon/android-icon-192x192.png' %}">
+
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+
+{% include 'header.html' %}
+
+
+<div class="main_bg">
+    <section class="profile">
+        <div class="container">
+            <h1 class="title title_center">Личный кабинет</h1>
+            <div class="profile__tabs-wrapper">
+                <ul class="profile__tabs-menu">
+                    <li class="profile__tabs-item profile__tabs-item_active" data-tab="profile">Главная</li>
+                    <li class="profile__tabs-item" data-tab="orders">История заказов</li>
+                    <li class="profile__tabs-item" data-tab="vacancies">История вакансий</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="profile-content">
+        <div class="container">
+            <div class="profile-content__wrapper">
+                <div class="profile-content__content-item profile-content__content-item_active"
+                     data-content="profile">
+                    <div class="profile-content__form-block">
+                        <div class="profile-content__form-flex">
+                            <h2 class="profile-content__title">Личные данные</h2>
+                            <form action="{% url 'users:profile' %}" method="post" class="profile-content__form"
+                                  id="profile-form">
+                                {% csrf_token %}
+                                <div class="profile-content__form-field">
+                                    <label for="{{ form.first_name.id_for_label }}" class="profile-content__form-label">Имя</label>
+                                    {{ form.first_name }}
+                                </div>
+                                <div class="profile-content__form-field">
+                                    <label for="{{ form.last_name.id_for_label }}"
+                                           class="profile-content__form-label">Фамилия</label>
+                                    {{ form.last_name }}
+                                </div>
+                                <div class="profile-content__form-field">
+                                    <label for="{{ form.patronymic.id_for_label }}"
+                                           class="profile-content__form-label">Отчество</label>
+                                    {{ form.patronymic }}
+                                </div>
+                                <div class="profile-content__form-field">
+                                    <label for="{{ form.username.id_for_label }}"
+                                           class="profile-content__form-label">Логин</label>
+                                    {{ form.username }}
+                                </div>
+                                <div class="profile-content__form-field">
+                                    <label for="{{ form.phone_number.id_for_label }}"
+                                           class="profile-content__form-label">Номер
+                                        телефона</label>
+                                    {{ form.phone_number }}
+                                </div>
+                                <div class="profile-content__form-field">
+                                    <label for="{{ form.email.id_for_label }}"
+                                           class="profile-content__form-label">Почта</label>
+                                    {{ form.email }}
+                                </div>
+                                <button type="submit" class="profile-content__form-button-edit">
+                                    Редактировать личные данные
+                                    <img src="{% static 'icons/profileEdit.svg' %}" alt="Редактировать профиль">
+                                </button>
+                            </form>
+                        </div>
+                        <form action="{% url 'users:logout' %}" method="post" class="profile-content__form">
+                            {% csrf_token %}
+                            <button type="submit" class="profile-content__form-button-logout">
+                                Выйти из аккаунта
+                                <img src="{% static 'icons/profileLogout.svg' %}" alt="Выход из аккаунта">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="profile-content__content-item" data-content="orders">
+                    <h2 class="profile-content__title">Заказы</h2>
+                    <div class="profile-content__block-wrapper">
+                        {% for order in orders %}
+                            <div class="profile-content__block">
+                                <table class="profile-content__table">
+                                    <thead class="profile-content__table-thead">
+                                    <tr class="profile-content__table-tr">
+                                        <th class="profile-content__table-th"><span>Заказ #{{ order.id }}</span></th>
+                                        <th class="profile-content__table-th profile-content__table-th_center">Дата
+                                            заказа
+                                        </th>
+                                        <th class="profile-content__table-th profile-content__table-th_center">Кол-во
+                                            товаров
+                                        </th>
+                                        <th class="profile-content__table-th profile-content__table-th_center">Сумма
+                                            заказа
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="profile-content__table-tbody">
+                                    <tr class="profile-content__table-tr">
+                                        <td class="profile-content__table-td">
+                                            <span>Статус: {{ order.status_display }}</span></td>
+                                        <td class="profile-content__table-td profile-content__table-td_center">{{ order.created_at|date:"d.m.Y" }}
+                                        </td>
+                                        <td class="profile-content__table-td profile-content__table-td_center">{{ order.basket_history.purchased_items|length }}</td>
+                                        <td class="profile-content__table-td profile-content__table-td_center">{{ order.basket_history.total_sum }}
+                                            ₽
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="profile-content__table-btns-wrapper">
+                                    <a href="{% url 'orders:order_list' order.pk %}" class="profile-content__table-btn">Подробности</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="profile-content__content-item" data-content="vacancies">
+                    <h2 class="profile-content__title">Заявка на вакансии</h2>
+                    <div class="profile-content__block-wrapper">
+                        {% for application in applications %}
+                            <div class="profile-content__block">
+                                <table class="profile-content__table">
+                                    <thead class="profile-content__table-thead">
+                                    <tr class="profile-content__table-tr">
+                                        <th class="profile-content__table-th"><span>Заявка #{{ application.id }}</span>
+                                        </th>
+                                        <th class="profile-content__table-th profile-content__table-th_center">Дата
+                                            подачи заявки
+                                        </th>
+                                        <th class="profile-content__table-th profile-content__table-th_center">
+                                            Должность
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="profile-content__table-tbody">
+                                    <tr class="profile-content__table-tr">
+                                        <td class="profile-content__table-td">
+                                            <span>Статус: {{ application.get_status_display }}</span></td>
+                                        <td class="profile-content__table-td profile-content__table-td_center">{{ application.created_at|date:"d.m.Y" }}</td>
+                                        <td class="profile-content__table-td profile-content__table-td_center">{{ application.vacancy.title }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="profile-content__table-btns-wrapper">
+                                    {% if application.status == 'created' %}
+                                        <a href="#"
+                                           class="profile-content__table-btn revoke-btn" data-id="{{ application.id }}">Отозвать</a>
+                                    {% endif %}
+                                    <a href="{% url 'vacancy:application_details' application.pk %}"
+                                       class="profile-content__table-btn">Подробности</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+{% include 'footer.html' %}
+
+{% include 'notification.html' %}
+
+<div class="notification" id="notification">
+    <div class="notification__text"></div>
+</div>
+
+
+{% include 'cookie.html' %}
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js" crossorigin="anonymous"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+
+</body>
+
+</html>

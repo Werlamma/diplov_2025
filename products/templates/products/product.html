@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Продукт</title>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicon/android-icon-192x192.png' %}">
+
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+
+{% include 'header.html' %}
+
+
+<section class="product">
+    <div class="container">
+        <div class="product__content">
+            <div class="product__block-img">
+                <img class="product__img" src="{{ product.image.url }}" alt="{{ product.name }}">
+            </div>
+            <div class="product__block-content">
+                <h1 class="title">{{ product.name }}</h1>
+                <h2 class="product__subtitle">Характеристики:</h2>
+                <ul class="product__characteristics">
+                    {% for characteristic in product.characteristics.splitlines %}
+                        <li class="product__characteristics-item">{{ characteristic }}</li>
+                    {% endfor %}
+                </ul>
+                <div class="product__price-btn-wrapper">
+                    <div class="product__price">{{ product.price|floatformat:0 }} ₽</div>
+
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'products:add_to_basket' product.slug %}" method="post"
+                              class="product__add-to-basket-form">
+                            {% csrf_token %}
+                            <button type="submit" class="product__btn">В корзину</button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'users:login' %}?next={{ request.path }}" class="product__btn">В корзину</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% include 'footer.html' %}
+
+<div class="notification" id="notification">
+    <div class="notification__text"></div>
+</div>
+
+{% include 'cookie.html' %}
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js" crossorigin="anonymous"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

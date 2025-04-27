@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Вакансии</title>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicon/android-icon-192x192.png' %}">
+
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+
+    {% include 'header.html' %}
+
+    
+
+    <section class="vacancy">
+        <div class="container">
+            <h1 class="title title_center">Вакансии</h1>
+        <div class="vacancy__wrapper">
+            <div class="vacancy__filters">
+                <!-- Фильтр по опыту -->
+                <div class="vacancy__filter">
+                    <h2 class="vacancy__filter-name">Опыт</h2>
+                    <ul class="vacancy__filter-menu">
+                        {% for value, label in experience_choices %}
+                        <li class="vacancy__filter-menu-item">
+                            <input id="experience-{{ value }}" type="checkbox" name="experience" value="{{ value }}" class="vacancy__filter-menu-input">
+                            <label for="experience-{{ value }}" class="vacancy__filter-menu-label">{{ label }}</label>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Фильтр по типу занятости -->
+                <div class="vacancy__filter">
+                    <h2 class="vacancy__filter-name">Тип занятости</h2>
+                    <ul class="vacancy__filter-menu">
+                        {% for value, label in employment_type_choices %}
+                        <li class="vacancy__filter-menu-item">
+                            <input id="employment-type-{{ value }}" type="checkbox" name="employment_type" value="{{ value }}" class="vacancy__filter-menu-input">
+                            <label for="employment-type-{{ value }}" class="vacancy__filter-menu-label">{{ label }}</label>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Фильтр по графику работы -->
+                <div class="vacancy__filter">
+                    <h2 class="vacancy__filter-name">График работы</h2>
+                    <ul class="vacancy__filter-menu">
+                        {% for value, label in schedule_choices %}
+                        <li class="vacancy__filter-menu-item">
+                            <input id="schedule-{{ value }}" type="checkbox" name="schedule" value="{{ value }}" class="vacancy__filter-menu-input">
+                            <label for="schedule-{{ value }}" class="vacancy__filter-menu-label">{{ label }}</label>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Фильтр по уровню квалификации -->
+                <div class="vacancy__filter">
+                    <h2 class="vacancy__filter-name">Уровень квалификации</h2>
+                    <ul class="vacancy__filter-menu">
+                        {% for value, label in qualification_choices %}
+                        <li class="vacancy__filter-menu-item">
+                            <input id="qualification-{{ value }}" type="checkbox" name="qualification" value="{{ value }}" class="vacancy__filter-menu-input">
+                            <label for="qualification-{{ value }}" class="vacancy__filter-menu-label">{{ label }}</label>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Фильтр по зарплате -->
+                <div class="vacancy__filter">
+                    <h2 class="vacancy__filter-name">Зарплата</h2>
+                    <ul class="vacancy__filter-menu">
+                        {% for value, label in salary_choices %}
+                        <li class="vacancy__filter-menu-item">
+                            <input id="salary-{{ value }}" type="checkbox" name="salary" value="{{ value }}" class="vacancy__filter-menu-input">
+                            <label for="salary-{{ value }}" class="vacancy__filter-menu-label">{{ label }}</label>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Кнопка "Очистить фильтры" -->
+                <a href="?" class="vacancy__filter-btn">Очистить фильтры</a>
+            </div>
+
+            <div class="vacancy__content">
+                <div class="vacancy__cards">
+                    {% for vacancy in vacancies %}
+                    <div class="vacancy__card">
+                        <div class="vacancy__card-left-content">
+                            <h2 class="vacancy__card-title">{{ vacancy.title }}</h2>
+                            <div class="vacancy__card-description">{{ vacancy.description }}</div>
+                            <div class="vacancy__card-tags">
+                                {% for tag in vacancy.tags.all %}
+                                <div class="vacancy__card-tag">{{ tag.name }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="vacancy__card-right-content">
+                            <div class="vacancy__card-price">{{ vacancy.salary_display }}</div>
+                            <a href="{% url 'vacancy:vacancy_detail' vacancy.pk %}" class="vacancy__card-btn">Откликнуться</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+            <div class="vacancy__pagination">
+                <ul class="vacancy__pagination-list">
+                    <!-- Кнопка "Назад" -->
+                    <li class="vacancy__pagination-item">
+                        <a href="#" class="vacancy__pagination-link vacancy__pagination-link_prev" aria-label="Предыдущая страница">
+                            <span class="vacancy__pagination-arrow">&laquo;</span>
+                        </a>
+                    </li>
+            
+                    <!-- Страницы -->
+                    <li class="vacancy__pagination-item">
+                        <a href="#" class="vacancy__pagination-link vacancy__pagination-link_active">1</a>
+                    </li>
+                    <li class="vacancy__pagination-item">
+                        <a href="#" class="vacancy__pagination-link">2</a>
+                    </li>
+                    <li class="vacancy__pagination-item">
+                        <a href="#" class="vacancy__pagination-link">3</a>
+                    </li>
+            
+                    <!-- Троеточие -->
+                    <li class="vacancy__pagination-item vacancy__pagination-item_ellipsis">
+                        <span class="vacancy__pagination-ellipsis">...</span>
+                    </li>
+            
+                    <!-- Последняя страница -->
+                    <li class="vacancy__pagination-item">
+                        <a href="#" class="vacancy__pagination-link">10</a>
+                    </li>
+            
+                    <!-- Кнопка "Вперед" -->
+                    <li class="vacancy__pagination-item">
+                        <a href="#" class="vacancy__pagination-link vacancy__pagination-link_next" aria-label="Следующая страница">
+                            <span class="vacancy__pagination-arrow">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+    {% include 'footer.html' %}
+
+
+
+    {% include 'cookie.html' %}
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/filtersPagination.js' %}"></script>
+</body>
+
+</html>

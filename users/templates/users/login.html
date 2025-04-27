@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Авторизация</title>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicon/android-icon-192x192.png' %}">
+
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+
+{% include 'header.html' %}
+
+
+<section class="login">
+    <div class="container">
+        <h1 class="login__title">С возвращением!</h1>
+        <div class="login__wrapper">
+            <div class="login__main-block">
+                <div class="login__content">
+                    <div class="login__form-content">
+                        <h2 class="login__subtitle">Войти в систему</h2>
+                        <form action="{% url 'users:login' %}" method="post" class="login__form" data-success-url="{% url 'users:profile' %}"  novalidate>
+                            {% csrf_token %}
+                            <div class="login__form-group">
+                                <label for="{{ form.username.id_for_label }}" class="login__label">Логин</label>
+                                {{ form.username }}
+                                {% if form.username.errors %}
+                                    <div class="text-danger">{{ form.username.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="login__form-group"> 
+                                <label for="{{ form.password.id_for_label }}" class="login__label">Пароль</label>
+                                {{ form.password }}
+                                {% if form.password.errors %}
+                                    <div class="text-danger">{{ form.password.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="login_submit-btn-wrapper">
+                                <button type="submit" class="login__submit-btn">Войти</button>
+                            </div>
+                        </form>
+                        <div class="login__forgot-password">Забыли пароль? <a href="{% url 'users:password_reset' %}"
+                                                                              class="login__forgot-password-link">Измените
+                            его здесь</a></div>
+                    </div>
+                    <div class="login__form-link-wrapper">
+                        <h2 class="login__form-link-title">У вас нет аккаунта?</h2>
+                        <div class="login__form-link-description">Создать аккаунт можно ниже</div>
+                        <ul class="login__form-link-list">
+                            <li class="login__form-link-item">Удобное управление заказами</li>
+                            <li class="login__form-link-item">Быстрое оформление</li>
+                            <li class="login__form-link-item">Качественные материалы</li>
+                            <li class="login__form-link-item">Простая навигация</li>
+                        </ul>
+                        <a href="{% url 'users:register' %}" class="login__form-link">Зарегистрироваться</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% include 'footer.html' %}
+
+
+{% include 'notification.html' %}
+
+
+{% include 'cookie.html' %}
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js" crossorigin="anonymous"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+
+</body>
+
+</html>

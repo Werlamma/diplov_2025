@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Вакансии</title>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicon/android-icon-192x192.png' %}">
+
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+
+{% include 'header.html' %}
+
+
+<div class="main_bg">
+    <section class="vacancy-detail">
+        <div class="container">
+            <div class="vacancy-detail__card">
+                <h1 class="vacancy-detail__card-name">{{ vacancy.title }}</h1>
+                <p class="vacancy-detail__card-description">{{ vacancy.description }}</p>
+                <div class="vacancy-detail__card-price">{{ vacancy.formatted_salary }}</div>
+                <button class="vacancy-detail__card-btn">Присоединиться</button>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="bid">
+        <div class="container">
+            <h2 class="bid__title">Подача заявки</h2>
+            <div class="bid__cards">
+                <div class="bid__card">
+                    <div class="bid__card-round">
+                        <div class="bid__card-number">1</div>
+                    </div>
+                    <div class="bid__card-name-descr-wrapper">
+                        <h3 class="bid__card-name">Отклик</h3>
+                        <div class="bid__card-description">Необходимо заполнить <a href="#targetBlock"
+                                                                                   class="bid__card-description-link">анкету</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bid__card bid__card">
+                    <div class="bid__card-round">
+                        <div class="bid__card-number">2</div>
+                    </div>
+                    <div class="bid__card-name-descr-wrapper">
+                        <h3 class="bid__card-name">Отбор</h3>
+                        <div class="bid__card-description">Пройдите интервью и/или тестовое задание</div>
+                    </div>
+                </div>
+                <div class="bid__card bid__card_grid">
+                    <div class="bid__card-round">
+                        <div class="bid__card-number">3</div>
+                    </div>
+                    <div class="bid__card-name-descr-wrapper">
+                        <h3 class="bid__card-name">Оформление</h3>
+                        <div class="bid__card-description">Ожидайте наш ответ</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bid__form-wrapper">
+                <div class="bid__form-block" id="targetBlock">
+                    <h2 class="bid__form-title">Анкета</h2>
+                    <form action="{% url 'vacancy:vacancy_detail' vacancy.id %}" method="post" class="bid__form" data-success-url="{% url 'users:profile' %}" novalidate>
+                        {% csrf_token %}
+                        <div class="bid__section">
+                            <h2 class="bid__section-title">Личные данные</h2>
+                            <div class="bid__field">
+                                <label for="{{ form.first_name.id_for_label }}" class="bid__label">Имя</label>
+                                {{ form.first_name }}
+                                {% if form.first_name.errors %}
+                                    <div class="text-danger">{{ form.first_name.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="bid__field">
+                                <label for="{{ form.last_name.id_for_label }}" class="bid__label">Фамилия</label>
+                                {{ form.last_name }}
+                                {% if form.last_name.errors %}
+                                    <div class="text-danger">{{ form.last_name.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="bid__field">
+                                <label for="{{ form.phone.id_for_label }}" class="bid__label">Телефон для связи</label>
+                                {{ form.phone }}
+                                {% if form.phone.errors %}
+                                    <div class="text-danger">{{ form.phone.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="bid__field">
+                                <label for="{{ form.birthdate.id_for_label }}" class="bid__label">Дата рождения</label>
+                                {{ form.birthdate }}
+                                {% if form.birthdate.errors %}
+                                    <div class="text-danger">{{ form.birthdate.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="bid__section">
+                            <h2 class="bid__section-title">Образование</h2>
+                            <div class="bid__field">
+                                <label for="{{ form.education_level.id_for_label }}" class="bid__label">Уровень образования</label>
+                                {{ form.education_level }}
+                                {% if form.education_level.errors %}
+                                    <div class="text-danger">{{ form.education_level.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="bid__field">
+                                <label for="{{ form.specialty.id_for_label }}" class="bid__label">Специальность</label>
+                                {{ form.specialty }}
+                                {% if form.specialty.errors %}
+                                    <div class="text-danger">{{ form.specialty.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="bid__field">
+                                <label for="{{ form.additional_education.id_for_label }}" class="bid__label">Дополнительное
+                                    образование</label>
+                                {{ form.additional_education }}
+                                {% if form.additional_education.errors %}
+                                    <div class="text-danger">{{ form.additional_education.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="bid__section">
+                            <h2 class="bid__section-title">Дополнительная информация</h2>
+                            <div class="bid__field">
+                                <label for="{{ form.additional_info.id_for_label }}" class="bid__label">Что мы должны знать о вас</label>
+                                {{ form.additional_info }}
+                                {% if form.additional_info.errors %}
+                                    <div class="text-danger">{{ form.additional_info.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <button type="submit" class="bid__submit-button">Отправить анкету</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+{% include 'footer.html' %}
+
+
+{% include 'cookie.html' %}
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js" crossorigin="anonymous"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

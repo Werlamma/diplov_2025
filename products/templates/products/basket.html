@@ -1,0 +1,108 @@
+{% load custom_filters %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Корзина</title>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicon/android-icon-192x192.png' %}">
+
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+
+{% include 'header.html' %}
+
+
+<section class="basket">
+    <div class="container">
+        <div class="page-header__title-wrapper">
+            <div class="page-header__link-back-block">
+                <img src="{% static 'icons/arrowBack.svg' %}" alt="Вернуться назад">
+                <a href="{% url 'products:products' %}" class="page-header__link-back">Вернуться к каталогу</a>
+            </div>
+            <div class="page-header__title-block">
+                {% if baskets %}
+                    <h1 class="title">Корзина</h1>
+                {% else %}
+                    <h1 class="title">Корзина пуста</h1>
+                {% endif %}
+            </div>
+        </div>
+        <div class="page-header__date">
+            Всего: {{ total_quantity }} {{ total_quantity|pluralize_russian }}
+        </div>
+
+
+        <div class="basket__wrapper">
+            {% for basket in baskets %}
+                <div class="basket__product" data-product-slug="{{ basket.product.slug }}">
+                    <div class="basket__product-img-delete-name-wrapper">
+                        <div class="basket__product-img-block">
+                            <img src="{{ basket.product.image.url }}" alt="{{ basket.product.name }}"
+                                 class="basket__product-img">
+                        </div>
+                        <div class="basket__product-name-delete-block">
+                            <h2 class="basket__product-name">{{ basket.product.name }}</h2>
+                            <form action="{% url 'products:remove_from_basket' basket.product.slug %}" method="post"
+                                  class="basket__product-delete-form">
+                                {% csrf_token %}
+                                <button type="submit" class="basket__product-delete">
+                                    <img src="{% static 'icons/basketDelete.svg' %}" alt="Удалить продукт">
+                                    <div class="basket__product-delete-name">Удалить товар</div>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="basket__product-counter-sum-wrapper">
+                        <div class="basket__product-counter">
+                            <button class="basket__product-counter-decrease">-</button>
+                            <div class="basket__product-counter-value">{{ basket.quantity }}</div>
+                            <button class="basket__product-counter-increase">+</button>
+                        </div>
+                        <div class="basket__sum-wrapper">
+                            <div class="basket__sum">{{ basket.sum|floatformat:0 }} ₽</div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% if baskets %}
+            <div class="basket__total-sum">Итоговая сумма: <span
+                    class="basket__total-sum basket__total-sum_fw700">{{ total_sum|floatformat:0 }} ₽</span></div>
+            <a href="{% url 'orders:order_create' %}" class="basket__checkout-button">Оформить заказ</a>
+        {% endif %}
+    </div>
+</section>
+
+
+{% include 'footer.html' %}
+
+<div class="notification" id="notification">
+    <div class="notification__text"></div>
+</div>
+
+{% include 'cookie.html' %}
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js" crossorigin="anonymous"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+
+</body>
+
+</html>
