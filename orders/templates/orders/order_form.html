@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Оформление заказа</title>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicon/android-icon-192x192.png' %}">
+
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+
+    {% include 'header.html' %}
+
+
+    <section class="order-form">
+        <div class="container">
+            <h1 class="title title_center">Оформление заказа</h1>
+            <div class="order-form__block">
+                <form action="{% url 'orders:order_create' %}" method="post" class="order-form__form" novalidate>
+                {% csrf_token %}
+                    <div class="order-form__form-field-wrapper">
+                        <div class="order-form__form-field">
+                            <label for="{{ form.first_name.id_for_label }}" class="order-form__label">Имя</label>
+                            {{ form.first_name }}
+                            {% if form.first_name.errors %}
+                                    <div class="text-danger">{{ form.first_name.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="order-form__form-field">
+                            <label for="{{ form.last_name.id_for_label }}" class="order-form__label">Фамилия</label>
+                            {{ form.last_name }}
+                            {% if form.last_name.errors %}
+                                    <div class="text-danger">{{ form.last_name.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="order-form__form-field">
+                            <label for="{{ form.email.id_for_label }}" class="order-form__label">Адрес электронной почты</label>
+                            {{ form.email }}
+                            {% if form.email.errors %}
+                                    <div class="text-danger">{{ form.email.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="order-form__form-field">
+                            <label for="{{ form.phone_number.id_for_label }}" class="order-form__label">Номер телефона</label>
+                            {{ form.phone_number }}
+                            {% if form.phone_number.errors %}
+                                    <div class="text-danger">{{ form.phone_number.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="order-form__form-field">
+                            <label for="{{ form.address.id_for_label }}" class="order-form__label">Адрес доставки</label>
+                            {{ form.address }}
+                            {% if form.address.errors %}
+                                    <div class="text-danger">{{ form.address.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <button type="submit" class="order-form__form-btn">Продолжить</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    {% include 'footer.html' %}
+
+
+    {% include 'cookie.html' %}
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Детали заказа</title>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicon/android-icon-192x192.png' %}">
+
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+
+{% include 'header.html' %}
+
+
+<section class="details-section">
+    <div class="container">
+        <div class="page-header__title-wrapper">
+            <a href="{% url 'users:profile' %}" class="page-header__link-back-block">
+                <img src="{% static 'icons/arrowBack.svg' %}" alt="Вернуться назад">
+                <div class="page-header__link-back">Назад</div>
+            </a>
+            <div class="page-header__title-block">
+                <h1 class="title">Подробности заказа №{{ order.id }}</h1>
+            </div>
+        </div>
+        <div class="page-header__date">от {{ order.created_at|date:"d.m.Y" }}</div>
+
+        <div class="details-section__table-block">
+            <table class="details-section__table">
+                <thead class="details-section__table-head">
+                <tr class="details-section__table-row">
+                    <th class="details-section__table-header">Название товара</th>
+                    <th class="details-section__table-header">Количество</th>
+                    <th class="details-section__table-header">Цена</th>
+                    <th class="details-section__table-header">Сумма</th>
+                </tr>
+                </thead>
+                <tbody class="details-section__table-body">
+                {% for item in order.basket_history.purchased_items %}
+                    <tr class="details-section__table-row">
+                        <td class="details-section__table-data">{{ item.product_name }}</td>  <!-- Название товара -->
+                        <td class="details-section__table-data">{{ item.quantity }}</td>  <!-- Количество -->
+                        <td class="details-section__table-data">{{ item.price|floatformat:2 }} ₽</td>
+                        <!-- Цена товара -->
+                        <td class="details-section__table-data">{{ item.sum|floatformat:2 }} ₽</td>
+                        <!-- Сумма товара -->
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="details-section__low-block-wrapper">
+                <div class="details-section__status-sum-block">
+                    <div class="details-section__status-sum">Статус: <span
+                            class="details-section__status-sum-fw">{{ order.get_status_display }}</span></div>
+                    <div class="details-section__status-sum">Итоговая сумма: <span
+                            class="details-section__status-sum-fw">{{ order.basket_history.total_sum|floatformat:2 }} ₽</span>
+                    </div>
+                </div>
+                {% if order.rejection_reason %}
+                    <div class="details-section__rejection-block">
+                        <div class="details-section__rejection-title">Причина отказа</div>
+                        <textarea class="details-section__rejection-textarea"
+                                  readonly>{{ order.rejection_reason }}</textarea>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% include 'footer.html' %}
+
+
+{% include 'cookie.html' %}
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js" crossorigin="anonymous"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+
+</body>
+
+</html>
