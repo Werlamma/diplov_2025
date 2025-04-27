@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Контакты</title>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicon/android-icon-192x192.png' %}">
+
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+
+    {% include 'header.html' %}
+
+
+    <section class="contacts">
+        <div class="container">
+            <h1 class="contacts__title contacts__title_fz contacts__title_mt">Наши контакты</h1>
+            <div class="contacts__height-block">
+                <div class="contacts__address-block">
+                    <div class="contacts__title-block">
+                        <h2 class="contacts__title">Адрес</h2>
+                        <img src="{% static 'icons/metka.svg' %}" alt="Местоположение">
+                    </div>
+                    <address class="contacts__address">ОАО «Юрьев-Польский завод «Промсвязь»
+                        601800, г. Юрьев-Польский, Владимирской обл., ул. Набережная, 80</address>
+                </div>
+                <div class="contacts__marketing-block">
+                    <div class="contacts__title-block">
+                        <h2 class="contacts__title">Отдел маркетинга</h2>
+                        <img src="{% static 'icons/marketing.svg' %}" alt="Местоположение">
+                    </div>
+                    <div class="contacts__telephone">Тел./факс: <a href="tel:4924622796"
+                            class="contacts__telephone">(49246) 2-27-96</a> <a href="tel:22004"
+                            class="contacts__telephone">2-20-04</a></div>
+                    <div class="contacts__email">E-mail: <a href="mailto:market@yps.ru"
+                            class="contacts__email">market@yps.ru</a></div>
+                </div>
+            </div>
+            <h2 class="contacts__title contacts__title_fz">Клиентская карточка</h2>
+            <h3 class="contacts__title-subtitle">Наши реквизиты</h3>
+
+            <div class="contacts__table-wrapper">
+                <div class="contacts__table-card">
+                    <h4 class="contacts__table-name">Адрес</h4>
+                    <address class="contacts__table-information">601800, Владимирская область, Юрьев-Польский
+                        район, г. Юрьев-Польский, ул. Набережная, 80</address>
+                </div>
+                <div class="contacts__table-card">
+                    <h4 class="contacts__table-name">Тел./факс</h4>
+                    <a href="tel:4924622120" class="contacts__table-information">(49246) 2-21-20</a>
+                </div>
+                <div class="contacts__table-card">
+                    <h4 class="contacts__table-name">Код станции</h4>
+                    <div class="contacts__table-information">317305</div>
+                </div>
+                <div class="contacts__table-card">
+                    <h4 class="contacts__table-name">Код предприятия</h4>
+                    <div class="contacts__table-information">7191914</div>
+                </div>
+                <div class="contacts__table-card">
+                    <h4 class="contacts__table-name">Банк</h4>
+                    <div class="contacts__table-information">Владимирское отделение № 8611 ПАО Сбербанк
+                        г.Владимир</div>
+                </div>
+                <div class="contacts__table-card">
+                    <h4 class="contacts__table-name">Р/с</h4>
+                    <div class="contacts__table-information">407 028 109 101 301 000 41</div>
+                </div>
+                <div class="contacts__table-card">
+                    <h4 class="contacts__table-name">Получатель</h4>
+                    <div class="contacts__table-information">ОАО "Юрьев-Польский завод "Промсвязь"</div>
+                </div>
+                <div class="contacts__table-card">
+                    <h4 class="contacts__table-name">К/с</h4>
+                    <div class="contacts__table-information">301 018 100 000 000 006 02</div>
+                </div>
+                <div class="contacts__table-card">
+                    <h4 class="contacts__table-name">БИК</h4>
+                    <div class="contacts__table-information">041 708 602</div>
+                </div>
+                <div class="contacts__table-card">
+                    <h4 class="contacts__table-name">ИНН</h4>
+                    <div class="contacts__table-information">332 600 1132</div>
+                </div>
+                <div class="contacts__table-card">
+                    <h4 class="contacts__table-name">КПП</h4>
+                    <div class="contacts__table-information">332 601 001</div>
+                </div>
+                <div class="contacts__table-card">
+                    <h4 class="contacts__table-name">ОКПО</h4>
+                    <div class="contacts__table-information">05744751</div>
+                </div>
+                <div class="contacts__table-card">
+                    <h4 class="contacts__table-name">ОКВЭД</h4>
+                    <div class="contacts__table-information">26.30.11</div>
+                </div>
+                <div class="contacts__table-card">
+                    <h4 class="contacts__table-name">Ген. директор</h4>
+                    <div class="contacts__table-information">Макеев П. Н.</div>
+                </div>
+                <div class="contacts__table-card">
+                    <h4 class="contacts__table-name">ОКВЭД</h4>
+                    <a href="mailto:zavod@yps.ru" class="contacts__table-information">zavod@yps.ru</a>
+                </div>
+                <div class="contacts__table-card">
+                    <h4 class="contacts__table-name">Сайт</h4>
+                    <a href="http://www.yps.ru" class="contacts__table-information" target="_blank"
+                        rel="noopener noreferrer">http://www.yps.ru</a>
+                </div>
+            </div>
+            <h2 class="contacts__title contacts__title_fz">Мы на карте</h2>
+        </div>
+        <div class="contacts__maps">
+            <iframe class="contacts__map"
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3Ad4ef1b4a389edd42a67c94b6a38c47c04e2357d92fa610578612df5cc451a959&amp;source=constructor"></iframe>
+        </div>
+    </section>
+
+
+
+    {% include 'footer.html' %}
+
+
+
+    {% include 'cookie.html' %}
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

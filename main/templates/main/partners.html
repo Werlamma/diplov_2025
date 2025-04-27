@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Наши партнёры</title>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicon/android-icon-192x192.png' %}">
+
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+
+
+    {% include 'header.html' %}
+
+
+
+    <section class="partners">
+        <div class="container">
+            <h1 class="title title_center fade-in">Наши партнеры</h1>
+            <div class="partners__text">
+                <p class="partners__description fade-in">Нашими постоянными партнерами и потребителями нашей
+                    продукции являются такие предприятия, как ОАО "Ростелеком", ОАО "Московская городская
+                    телефонная сеть", ОАО "Мобильные телесистемы", ОАО "Центр-телеком",  АО "Электросвязь" 89
+                    регионов Российской Федерации, более 30 компаний мобильных операторов, региональные
+                    коммерческие операторы и многие-многие другие.</p>
+                <p class="partners__description fade-in">Наши установки и оборудование используются для питания
+                    телекоммуникационной аппаратуры, производимой известными зарубежными фирмами: NEC, Alcatel,
+                    Siemens, Ericsson и т.д.</p>
+            </div>
+            <hr class="partners__divider">
+            <h2 class="title title_center">Наши дилеры</h2>
+
+            <div class="partners__card fade-in">
+                <div class="partners__card-information">
+                    <div class="partners__card-information-content">г.Воронеж</div>
+                    <div class="partners__card-information-content">ООО "Элсис"</div>
+                    <div class="partners__card-information-content">Директор: Кузнецов М.Д.</div>
+                </div>
+                <div class="partners__card-information">
+                    <a href="tel:4732" class="partners__card-information-content">(4732)</a>
+                    <a href="tel:538155" class="partners__card-information-content">53-81-55</a>
+                    <a href="tel:243808" class="partners__card-information-content">24-38-08</a>
+                </div>
+                <div class="partners__card-information">
+                    <div class="partners__card-information-content">Адрес:</div>
+                    <address class="partners__card-information-content">394087, г.Воронеж, ул.Ломоносова д. 105
+                        оф.122</address>
+                    <div class="partners__card-information-content">E-mail: </div>
+                    <a class="partners__card-information-content" href="mailto:elsys@elsys.org">elsys@elsys.org</a>
+                </div>
+            </div>
+            <h3 class="partners__title">Приволжский регион, Средневолжский регион</h3>
+            <div class="partners__card fade-in">
+                <div class="partners__card-information">
+                    <div class="partners__card-information-content">г.Нижний Новгород</div>
+                    <div class="partners__card-information-content">ООО "ЭнергоДизайн"</div>
+                    <div class="partners__card-information-content">Директор: Мащенков Д.Г.</div>
+                </div>
+                <div class="partners__card-information">
+                    <a href="tel:831" class="partners__card-information-content">(831)</a>
+                    <a href="tel:2561700" class="partners__card-information-content">256-17-00</a>
+                </div>
+                <div class="partners__card-information">
+                    <div class="partners__card-information-content">Адрес:</div>
+                    <address class="partners__card-information-content">603122, г.Нижний Новгород, ул.Юлиуса
+                        Фучика, д.8</address>
+                    <div class="partners__card-information-content">E-mail: </div>
+                    <a class="partners__card-information-content" href="mailto:office@en-de.ru">office@en-de.ru</a>
+                </div>
+            </div>
+            <h3 class="partners__title">Уральский регион, Волго-вятский район</h3>
+            <div class="partners__card fade-in">
+                <div class="partners__card-information">
+                    <div class="partners__card-information-content">г.Екатеринбург</div>
+                    <div class="partners__card-information-content">ООО "Промсвязькомплект"</div>
+                    <div class="partners__card-information-content">Директор: Ватутин Д.В.</div>
+                </div>
+                <div class="partners__card-information">
+                    <a href="tel:343" class="partners__card-information-content">(343)</a>
+                    <a href="tel:3420350" class="partners__card-information-content">342-03-50
+                        многоканальный</a>
+                </div>
+                <div class="partners__card-information">
+                    <div class="partners__card-information-content">Адрес:</div>
+                    <address class="partners__card-information-content">620075, г. Екатеринбург, ул. Бажова, 68
+                    </address>
+                    <div class="partners__card-information-content">E-mail: </div>
+                    <a class="partners__card-information-content" href="mailto:pskt@pskt.ru">pskt@pskt.ru</a>
+                    <a class="partners__card-information-content" href="mailto:vatutin@pskt.ru">vatutin@pskt.ru</a>
+                </div>
+            </div>
+            <h3 class="partners__title">Северо-западный регион</h3>
+            <div class="partners__card fade-in">
+                <div class="partners__card-information">
+                    <div class="partners__card-information-content">г.Санкт-Петербург</div>
+                    <div class="partners__card-information-content">ООО "Энерпит"</div>
+                    <div class="partners__card-information-content">Директор: Мирошниченко С.В.</div>
+                </div>
+                <div class="partners__card-information">
+                    <a href="tel:78124260993" class="partners__card-information-content">+7(812) 426-09-93</a>
+                    <a href="tel:79119498862" class="partners__card-information-content">+7(911) 949-88-62</a>
+                </div>
+                <div class="partners__card-information">
+                    <div class="partners__card-information-content">Адрес:</div>
+                    <address class="partners__card-information-content">194100, Санкт-Петербург, ул.
+                        Новолитовская, дом 15 литер а, офис д-614</address>
+                    <div class="partners__card-information-content">E-mail: </div>
+                    <a class="partners__card-information-content" href="mailto:60dc@mail.ru">60dc@mail.ru</a>
+                </div>
+            </div>
+            <h3 class="partners__title">Сибирь, Дальний Восток</h3>
+            <div class="partners__card fade-in">
+                <div class="partners__card-information">
+                    <div class="partners__card-information-content">г.Барнаул</div>
+                    <div class="partners__card-information-content">ООО "АЛСЭНСВЯЗЬЭНЕРГО"</div>
+                    <div class="partners__card-information-content">Директор: Кулишов В.Г.</div>
+                </div>
+                <div class="partners__card-information">
+                    <a href="tel:3852" class="partners__card-information-content">(3852)</a>
+                    <a href="tel:777733" class="partners__card-information-content">77-77-33</a>
+                </div>
+                <div class="partners__card-information">
+                    <div class="partners__card-information-content">Адрес:</div>
+                    <address class="partners__card-information-content">656012, г. Барнаул, ул. Кулагина, дом 28
+                    </address>
+                    <div class="partners__card-information-content">E-mail: </div>
+                    <a class="partners__card-information-content" href="alsen.se@mail.ru">alsen.se@mail.ru</a>
+                </div>
+            </div>
+            <h3 class="partners__title">Юг, Северный Кавказ</h3>
+            <div class="partners__card fade-in">
+                <div class="partners__card-information">
+                    <div class="partners__card-information-content">г.Ростов-на-Дону</div>
+                    <div class="partners__card-information-content">ООО "ЮГПРОМСВЯЗЬ"</div>
+                    <div class="partners__card-information-content">Директор: Герасимов В.А.</div>
+                </div>
+                <div class="partners__card-information">
+                    <a href="tel:8632" class="partners__card-information-content">(8632)</a>
+                    <a href="tel:344485" class="partners__card-information-content">34-44-85</a>
+                    <a href="tel:424730" class="partners__card-information-content">42-47-30</a>
+                    <a href="tel:424731" class="partners__card-information-content">42-47-31</a>
+                </div>
+                <div class="partners__card-information">
+                    <div class="partners__card-information-content">Адрес:</div>
+                    <address class="partners__card-information-content">344018, г.Ростов-на-Дону,
+                        пер.Халтуринский, дом 202</address>
+                    <div class="partners__card-information-content">E-mail: </div>
+                    <a class="partners__card-information-content" href="mailto:ups-rnd@rostel.ru">ups-rnd@rostel.ru</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+    {% include 'footer.html' %}
+
+
+    {% include 'cookie.html' %}
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

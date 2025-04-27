@@ -1,0 +1,205 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>О нас</title>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicon/android-icon-192x192.png' %}">
+
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+
+{% include 'header.html' %}
+
+
+<section class="history">
+    <div class="container">
+        <h1 class="history__title fade-in">О заводе "Промсвязь"</h1>
+        <div class="history__text">
+            <p class="history__description fade-in">ОАО «Юрьев-Польский завод «Промсвязь», основанный в 1931
+                году, в СССР был основным производителем многих видов электропитающего оборудования для
+                предприятий связи. В настоящее время ОАО «Юрьев-Польский завод «Промсвязь» является одним из
+                основных отечественных производителей ЭПУ.</p>
+            <p class="history__description fade-in">Основной разработчик продукции завода был ОАО
+                "ЦКБ-связь", тесное сотрудничество с которым началось вскоре после образования ЦКБ в 1952 г.
+            </p>
+            <p class="history__description fade-in">В течение многих лет для предприятий связи
+                разрабатывались и производились такие всем известные электропитающие устройства, как ВУК,
+                ВУТ и др., которые до сих пор сохраняют свою работоспособность, многократно перекрыв
+                расчетный эксплуатационный ресурс.</p>
+            <p class="history__description fade-in">Новым этапом совместной работы явилось создание в 1998
+                году ООО "Промсвязьдизайн", взявшего на себя функции системного интегратора цепочки
+                "производитель - разработчик - поставщик - потребитель".</p>
+        </div>
+        <hr class="history__divider">
+        <h2 class="history__title">Предлагаемая продукция</h2>
+
+        <div class="history__products">
+            <div class="history__products-card">
+                <picture>
+                    <source srcset="{% static 'images/rectifier.webp' %}" type="image/webp">
+                    <img src="{% static 'images/rectifier.png' %}" alt="выпрямители">
+                </picture>
+                <div class="history__products-name">Выпрямители</div>
+            </div>
+            <div class="history__products-card">
+                <picture>
+                    <source srcset="{% static 'images/converters.webp' %}" type="image/webp">
+                    <img src="{% static 'images/converters.png' %}" alt="конверторы">
+                </picture>
+                <div class="history__products-name">конверторы</div>
+            </div>
+            <div class="history__products-card">
+                <picture>
+                    <source srcset="{% static 'images/inverters.webp' %}" type="image/webp">
+                    <img src="{% static 'images/inverters.png' %}" alt="инверторы">
+                </picture>
+                <div class="history__products-name">инверторы</div>
+            </div>
+            <div class="history__products-card">
+                <picture>
+                    <source srcset="{% static 'images/stabilizers.webp' %}" type="image/webp">
+                    <img src="{% static 'images/stabilizers.png' %}" alt="стабилизаторы">
+                </picture>
+                <div class="history__products-name">стабилизаторы</div>
+            </div>
+            <div class="history__products-card">
+                <picture>
+                    <source srcset="{% static 'images/switching.webp' %}" type="image/webp">
+                    <img src="{% static 'images/switching.png' %}" alt="коммутационно-распределительное оборудование">
+                </picture>
+                <div class="history__products-name history__products-name_width">
+                    коммутационно-распределительное оборудование
+                </div>
+            </div>
+            <div class="history__products-card">
+                <picture>
+                    <source srcset="{% static 'images/crossConnecting.webp' %}" type="image/webp">
+                    <img src="{% static 'images/crossConnecting.png' %}" alt="кроссовое оборудование: шкафы, боксы, коробки">
+                </picture>
+                <div class="history__products-name history__products-name_width">кроссовое оборудование:
+                    шкафы, боксы, коробки
+                </div>
+            </div>
+            <div class="history__products-card">
+                <picture>
+                    <source srcset="{% static 'images/uninterruptiblePower.webp' %}" type="image/webp">
+                    <img src="{% static 'images/uninterruptiblePower.png' %}"
+                         alt="системы бесперебойного питания постоянного тока">
+                </picture>
+                <div class="history__products-name history__products-name_width">системы бесперебойного
+                    питания постоянного тока
+                </div>
+            </div>
+        </div>
+
+        <h2 class="history__title history__title_mt">Отличительные особенности нашей <br> продукции</h2>
+        <div class="history__peculiarities">
+            <div class="history__peculiarity">
+                <div class="history__peculiarity-gear"></div>
+                <div class="history__peculiarity-description">Система качества отвечает стандарту ИСО
+                    9001-2001
+                </div>
+            </div>
+            <div class="history__peculiarity">
+                <div class="history__peculiarity-gear"></div>
+                <div class="history__peculiarity-description">Надежность защиты, высокий уровень
+                    безопасности
+                </div>
+            </div>
+            <div class="history__peculiarity">
+                <div class="history__peculiarity-gear"></div>
+                <div class="history__peculiarity-description">Высокая отказоустойчивость, длительный срок
+                    службы
+                </div>
+            </div>
+            <div class="history__peculiarity">
+                <div class="history__peculiarity-gear"></div>
+                <div class="history__peculiarity-description">Возможность свободного наращивания мощности
+                    установок
+                </div>
+            </div>
+            <div class="history__peculiarity">
+                <div class="history__peculiarity-gear"></div>
+                <div class="history__peculiarity-description">Простота ввода в эксплуатацию</div>
+            </div>
+            <div class="history__peculiarity">
+                <div class="history__peculiarity-gear"></div>
+                <div class="history__peculiarity-description">Различные варианты конфигурации установок
+                </div>
+            </div>
+            <div class="history__peculiarity">
+                <div class="history__peculiarity-gear"></div>
+                <div class="history__peculiarity-description">Улучшенные дизайн и массогабаритные показатели
+                </div>
+            </div>
+            <div class="history__peculiarity">
+                <div class="history__peculiarity-gear"></div>
+                <div class="history__peculiarity-description">Высокая ремонтопригодность</div>
+            </div>
+            <div class="history__peculiarity">
+                <div class="history__peculiarity-gear"></div>
+                <div class="history__peculiarity-description">Сроки исполнения заказов 30-45 дней</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="statistics">
+    <div class="container">
+        <div class="statistics__blocks">
+            <div class="statistics__block">
+                <div class="statistics__number">1931</div>
+                <div class="statistics__title">год основания</div>
+            </div>
+            <div class="statistics__block">
+                <div class="statistics__number">784</div>
+                <div class="statistics__title">работников</div>
+            </div>
+            <div class="statistics__block">
+                <div class="statistics__number">100%</div>
+                <div class="statistics__title">довольных клиентов</div>
+            </div>
+        </div>
+        <div class="statistics__low-blocks">
+            <div class="statistics__block">
+                <div class="statistics__number">30%</div>
+                <div class="statistics__title">Инженерных систем в регионе построено с нашим оборудованием
+                </div>
+            </div>
+            <div class="statistics__block">
+                <div class="statistics__number">90%</div>
+                <div class="statistics__title">Проектов завершено раньше срока</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include 'footer.html' %}
+
+
+{% include 'cookie.html' %}
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js" crossorigin="anonymous"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

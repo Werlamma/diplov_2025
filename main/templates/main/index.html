@@ -1,0 +1,208 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Главная</title>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicon/android-icon-192x192.png' %}">
+
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+
+
+{% include 'header.html' %}
+
+<section class="promo">
+    <div class="container">
+        <h1 class="promo__title fade-in">Лидер в производстве оборудования для связи и энергетики</h1>
+        <div class="description description_color-white fade-in">ОАО “Юрьев-Польский завод “Промсвязь” —
+            ведущий производитель оборудования для телекоммуникаций и энергоснабжения.
+            Мы гордимся нашими традициями качества, инновационным подходом и надежностью в каждом проекте.
+        </div>
+        <a href="#" class="button fade-in">Подробнее</a>
+    </div>
+</section>
+
+
+<section class="main-service">
+    <div class="container">
+        <div class="main-service__height-block">
+            <h2 class="title fade-in">Наши услуги</h2>
+            <div class="description description_width fade-in">Мы помогаем вам достигать ваших целей, предоставляя
+                качественные и эффективные услуги!
+            </div>
+        </div>
+    </div>
+    <div class="main-service__wrapper-slider" role="region" aria-label="Слайдер наших услуг">
+        <article class="main-service__slide">
+            <picture>
+                <source srcset="{% static 'images/slide1.webp' %}" type="image/webp">
+                <img src="{% static 'images/slide1.png' %}" class="main-service__slide-img"
+                     alt="Обработка листового металла">
+            </picture>
+            <div class="main-service__slide-text">
+                <h2 class="title title_width title_fz40px">Обработка листового металла</h2>
+                <div class="main-service__slide-descr">Современные технологии и методы в обработке листового
+                    металла для повышения эффективности и качества продукции
+                </div>
+            </div>
+        </article>
+        <article class="main-service__slide">
+            <picture>
+                <source srcset="{% static 'images/slide2.webp' %}" type="image/webp">
+                <img src="{% static 'images/slide2.png' %}" class="main-service__slide-img" alt="Металлообработка">
+            </picture>
+            <div class="main-service__slide-text">
+                <h2 class="title title_width title_fz40px">Металлообработка</h2>
+                <div class="main-service__slide-descr">Точная металообработка: превращаем металл в надежные
+                    решения
+                </div>
+            </div>
+        </article>
+        <article class="main-service__slide">
+            <picture>
+                <source srcset="{% static 'images/slide3.webp' %}" type="image/webp">
+                <img src="{% static 'images/slide3.png' %}" class="main-service__slide-img" alt="Электросварка">
+            </picture>
+            <div class="main-service__slide-text">
+                <h2 class="title title_width title_fz40px">Электросварка</h2>
+                <div class="main-service__slide-descr">Прочность и точность в каждом движении</div>
+            </div>
+        </article>
+        <article class="main-service__slide">
+            <picture>
+                <source srcset="{% static 'images/slide4.webp' %}" type="image/webp">
+                <img src="{% static 'images/slide4.png' %}" class="main-service__slide-img"
+                     alt="Лакокрасочные покрытия">
+            </picture>
+            <div class="main-service__slide-text">
+                <h2 class="title title_width title_fz40px">Лакокрасочные покрытия</h2>
+                <div class="main-service__slide-descr">Покрытия, которые выдерживают испытание временем</div>
+            </div>
+        </article>
+        <article class="main-service__slide">
+            <picture>
+                <source srcset="{% static 'images/slide5.webp' %}" type="image/webp">
+                <img src="{% static 'images/slide5.png' %}" class="main-service__slide-img"
+                     alt="Гальванические покрытия">
+            </picture>
+            <div class="main-service__slide-text">
+                <h2 class="title title_width title_fz40px">Гальванические покрытия</h2>
+                <div class="main-service__slide-descr">Защита на молекулярном уровне. Долговечность в каждом
+                    слое
+                </div>
+            </div>
+        </article>
+        <article class="main-service__slide">
+            <picture>
+                <source srcset="{% static 'images/slide6.webp' %}" type="image/webp">
+                <img src="{% static 'images/slide6.png' %}" class="main-service__slide-img"
+                     alt="Сборка и пайка печатных плат">
+            </picture>
+            <div class="main-service__slide-text">
+                <h2 class="title title_width title_fz40px">Сборка и пайка печатных плат</h2>
+                <div class="main-service__slide-descr">Качество сборки и пайки – основа стабильной электроники
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+
+<section class="about">
+    <div class="container">
+        <h2 class="title fade-in">Инфраструктура</h2>
+        <div class="description fade-in">ОАО 'Юрьев-Польский завод ПромСвязь' — ведущий производитель оборудования
+            для телекоммуникаций и энергоснабжения. Мы гордимся нашими традициями качества, инновационным подходом и
+            надежностью в каждом проекте.
+        </div>
+        <div class="about__cards">
+            <div class="about__card fade-in">
+                <div class="about__card-number">01</div>
+                <div class="about__card-title">Разработка оборудования <br> и систем электропитания</div>
+            </div>
+            <div class="about__card fade-in">
+                <div class="about__card-number">02</div>
+                <div class="about__card-title">Проектирование установок</div>
+            </div>
+            <div class="about__card fade-in">
+                <div class="about__card-number">03</div>
+                <div class="about__card-title">Сертификация</div>
+            </div>
+            <div class="about__card fade-in">
+                <div class="about__card-number">04</div>
+                <div class="about__card-title">Производство</div>
+            </div>
+            <div class="about__card fade-in">
+                <div class="about__card-number">05</div>
+                <div class="about__card-title">Испытания</div>
+            </div>
+            <div class="about__card fade-in">
+                <div class="about__card-number">06</div>
+                <div class="about__card-title">Пусконаладочые работы</div>
+            </div>
+        </div>
+
+        <h2 class="title title_mt fade-in">Преимущества</h2>
+        <div class="description fade-in">ОАО "Юрьев-Польский завод "Промсвязь" и ООО "Промсвязьдизайн" обладают
+            значительными конкурентными преимуществами благодаря своей развитой инфраструктуре и многолетнему опыту
+            работы в отрасли.
+        </div>
+
+        <div class="about__cards about__cards_rows">
+            <div class="about__card fade-in">
+                <div class="about__card-number">01</div>
+                <div class="about__card-title">80-летний опыт производства</div>
+            </div>
+            <div class="about__card fade-in">
+                <div class="about__card-number">02</div>
+                <div class="about__card-title">60-летний опыт разработки</div>
+            </div>
+            <div class="about__card fade-in">
+                <div class="about__card-number">03</div>
+                <div class="about__card-title">Широкая номенклатура продукции</div>
+            </div>
+            <div class="about__card fade-in">
+                <div class="about__card-number">04</div>
+                <div class="about__card-title">Мы знаем какие системы питания нужны потребителю</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% include 'footer.html' %}
+
+
+{% include 'notification.html' %}
+
+
+{% include 'cookie.html' %}
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js" crossorigin="anonymous"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+
+<script>
+    const prevArrow = "{% static 'icons/arrowLeft.svg' %}";
+    const nextArrow = "{% static 'icons/arrowRight.svg' %}";
+</script>
+</body>
+
+</html>
